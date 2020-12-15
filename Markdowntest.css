@@ -1,0 +1,54 @@
+body {
+    counter-reset: chapter;
+}
+
+h1{
+    text-align: left;
+    text-indent: 5px;
+    padding: 5px;
+    margin: 0;
+  
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    position: relative;
+
+    counter-reset: sub-chapter;
+}
+
+h1::before {
+    counter-increment: chapter;
+    content: counter(chapter) ". ";
+}
+
+h1::after {
+    content: "";
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+}
+
+h2 {
+    counter-reset: section;
+    border-bottom: black solid 1px;
+
+    text-indent: 8px;
+}
+
+h2::before {
+    counter-increment: sub-chapter;
+    content: counter(chapter) "." counter(sub-chapter) ". ";
+}
+
+h3 {
+    text-decoration: underline;
+    text-indent: 10px;
+}
+
+h3::before {
+    counter-increment: section;
+    content: counter(chapter) "." counter(sub-chapter) "." counter(section) ". ";
+}
